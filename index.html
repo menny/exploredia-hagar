@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploredia - Come. Fly with us, Gatinha</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-day"> <!-- Default fallback -->
+
+    <div class="overlay"></div>
+
+    <main class="container">
+        <!-- Header -->
+        <header class="header">
+            <img src="assets/logo.png" alt="Exploredia Logo" class="logo">
+            <h1 class="company-title">Exploredia</h1>
+            <p class="tagline">"Come. Fly with us, Gatinha"</p>
+        </header>
+
+        <!-- Search Form -->
+        <section class="search-section glass-panel">
+            <form id="search-form">
+                <div class="form-group">
+                    <label for="date"><span class="material-icons">calendar_today</span> Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="origin"><span class="material-icons">flight_takeoff</span> Origin</label>
+                    <select id="origin" required>
+                        <option value="" disabled selected>Select Origin</option>
+                    </select>
+                </div>
+
+                <div class="icon-spacer">
+                    <span class="material-icons arrow-icon">trending_flat</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination"><span class="material-icons">flight_land</span> Destination</label>
+                    <select id="destination" required>
+                        <option value="" disabled selected>Select Destination</option>
+                    </select>
+                </div>
+
+                <div class="form-group submit-group">
+                    <button type="submit" class="btn-primary">
+                        <span class="material-icons">search</span> Find Flight
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Loading Modal -->
+        <div id="loading-modal" class="modal hidden">
+            <div class="modal-content glass-panel">
+                <div class="animation-container">
+                    <span class="material-icons plane-icon taking-off">flight_takeoff</span>
+                    <span class="material-icons plane-icon landing">flight_land</span>
+                </div>
+                <h2>Searching flight just for you, Gatinha...</h2>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <!-- Results Table -->
+        <section id="results-section" class="results-section glass-panel hidden">
+            <h2>Available Flights</h2>
+            <div class="table-responsive">
+                <table id="flights-table">
+                    <thead>
+                        <tr>
+                            <th>Airline</th>
+                            <th>Duration</th>
+                            <th>Starting Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="flights-body">
+                        <!-- Flights will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Flight Details Modal -->
+        <div id="flight-details-modal" class="modal hidden">
+            <div class="modal-content glass-panel flight-details-content">
+                <button id="close-details-btn" class="close-btn"><span class="material-icons">close</span></button>
+                <h2 id="details-airline-name">Flight Details</h2>
+                <div class="flight-summary">
+                    <p><span class="material-icons">schedule</span> <span id="details-duration"></span></p>
+                    <p><span class="material-icons">payments</span> Base Price: <span id="details-base-price"
+                            class="price"></span></p>
+                </div>
+
+                <div id="class-selection-container">
+                    <h3>Select your class</h3>
+                    <div id="class-buttons" class="class-buttons">
+                        <!-- Class buttons injected here -->
+                    </div>
+                </div>
+
+                <div id="payment-frame" class="payment-frame hidden">
+                    <div id="selected-class-row" class="selected-class-row">
+                        <span id="selected-class-name"></span>
+                        <span id="selected-class-price" class="price"></span>
+                    </div>
+                    <div class="payment-details">
+                        <p><span class="material-icons">credit_card</span> Payment method: <strong>'Teacher
+                                Credit'</strong></p>
+                        <p class="final-price-row">Total: <span id="final-price" class="price"></span></p>
+                        <button class="btn-disabled mt-1" disabled>Fully booked</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
